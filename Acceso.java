@@ -7,20 +7,21 @@ public class Acceso
     private int dia;
     private int hora;
     private int minutos;
+    private String ip;
+    private String direccion;
+    private String id;
 
-    public Acceso(String fecha)
+    public Acceso(String acceso)
     {
-        String[] string = fecha.split(" ");
-        int[] campoFecha = new int[string.length];
-        for (int i = 0 ; i < string.length; i++){
-            campoFecha[i] = Integer.parseInt(string[i]);
-        }
-        this.ano = campoFecha[0];
-        this.mes = campoFecha[1];
-        this.dia = campoFecha[2];
-        this.hora = campoFecha[3];
-        this.minutos = campoFecha[4];
-
+        String[] campoAcceso = acceso.split(" ");
+        this.ip = campoAcceso[0];
+        this.ano = Integer.parseInt(campoAcceso[1].replace("[",""));
+        this.mes = Integer.parseInt(campoAcceso[2]);
+        this.dia = Integer.parseInt(campoAcceso[3]);
+        this.hora = Integer.parseInt(campoAcceso[4]);
+        this.minutos = Integer.parseInt(campoAcceso[5].replace("]",""));
+        this.direccion = campoAcceso[6];
+        this.id = campoAcceso[7];
     }
    
 
@@ -47,5 +48,18 @@ public class Acceso
     public int getMinutos()
     {
         return minutos;
+    }
+    
+    public String getIp()
+    {
+        return ip;
+    }
+    
+    public String getDireccion(){
+        return direccion;
+    }
+    
+    public String id(){
+        return id;
     }
 }
